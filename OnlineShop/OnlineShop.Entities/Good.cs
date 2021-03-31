@@ -10,6 +10,7 @@ namespace OnlineShop.Entities
         {
             GoodEntries = new HashSet<GoodEntry>();
             Warehouses = new HashSet<Warehouse>();
+            salesItems = new HashSet<SalesItem>();
         }
         public int Id { get; set; }
         public string Title { get; set; }
@@ -19,6 +20,7 @@ namespace OnlineShop.Entities
         public Category  category { get; set; }
         public HashSet<GoodEntry>  GoodEntries { get; set; }
         public HashSet<Warehouse> Warehouses { get; set; }
+        public HashSet<SalesItem> salesItems { get; set; }
 
     }
 }
