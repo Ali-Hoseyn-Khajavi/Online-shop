@@ -10,7 +10,7 @@ namespace OnlineShop.Persistence.EF.SalesInvoices
     {
         public void Configure(EntityTypeBuilder<SalesInvoice> _)
         {
-            _.ToTable("SalesInvoises");
+            _.ToTable("SalesInvoices");
             _.HasKey(_ => _.Id);
             _.Property(_ => _.CustomerName).IsRequired();
             _.Property(_ => _.InvoiceNumber).IsRequired();

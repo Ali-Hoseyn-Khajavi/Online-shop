@@ -11,7 +11,7 @@ namespace OnlineShop.Entities
         public decimal Price { get; set; }
         public int GoodId { get; set; }
         public Good good { get; set; }
-        public int InvoceId { get; set; }
+        public int InvoiceId { get; set; }
 
         public SalesInvoice  salesInvoice  { get; set; }
     }

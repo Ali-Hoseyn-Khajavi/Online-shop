@@ -13,7 +13,7 @@ namespace OnlineShop.Entities
         }
         public int Id { get; set; }
         public string CustomerName { get; set; }
-        public int InvoiceNumber { get; set; }
+        public string InvoiceNumber { get; set; }
         public DateTime InvoiceDate { get; set; }
         public HashSet<SalesItem>  salesItems { get; set; }
         public HashSet<AccountingDocument>  accountingDocuments { get; set; }
