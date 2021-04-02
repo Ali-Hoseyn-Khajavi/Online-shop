@@ -12,10 +12,10 @@ namespace OnlineShop.Persistence.EF.Warehouses
 {
     public class EFWarehouseRepository : WarehouseRepository
     {
-        private readonly EFDataContext _context;
+        private readonly EFDbContext _context;
         private readonly DbSet<Warehouse> _set;
 
-        public EFWarehouseRepository(EFDataContext context)
+        public EFWarehouseRepository(EFDbContext context)
         {
             _context = context;
             _set = _context.Warehouses;

@@ -10,9 +10,9 @@ namespace OnlineShop.Persistence.EF.Goods
 {
     public class EFGoodRepository : GoodRepository
     {
-        private readonly EFDataContext _context;
+        private readonly EFDbContext _context;
         private readonly DbSet<Good> _set;
-        public EFGoodRepository(EFDataContext context)
+        public EFGoodRepository(EFDbContext context)
         {
             _context = context;
             _set = _context.goods;
@@ -41,7 +41,9 @@ namespace OnlineShop.Persistence.EF.Goods
             return await _set.AnyAsync(_ => _.Code == code);
         }
 
-        public async Task<bool> IsExistsTitleToGoodCategory(string title, int categoryId)
+     
+
+        public async Task<bool> IsExistsTitleToCategory(string title, int categoryId)
         {
             return await _set
                 .AnyAsync(_ =>

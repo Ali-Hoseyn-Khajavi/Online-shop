@@ -11,10 +11,10 @@ namespace OnlineShop.Persistence.EF.GoodEntries
 {
     public class EFGoodEntryRepository : GoodEntryRepository
     {
-        private readonly EFDataContext _context;
+        private readonly EFDbContext _context;
         private readonly DbSet<GoodEntry> _set;
 
-        public EFGoodEntryRepository(EFDataContext context)
+        public EFGoodEntryRepository(EFDbContext context)
         {
             _context = context;
             _set = _context.GoodEntries;

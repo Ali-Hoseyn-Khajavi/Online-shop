@@ -10,6 +10,7 @@ namespace OnlineShop.Services.SalesInvoices.Contracts
         public string CustomerName { get; set; }
         public string InvoiceNumber { get; set; }
         public DateTime InvoiceDate { get; set; }
+        public HashSet<SalesItemDto> SalesItemDto { get; internal set; }
     }
     public class SalesItemDto
     {

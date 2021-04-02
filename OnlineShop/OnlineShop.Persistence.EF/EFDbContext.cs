@@ -7,9 +7,9 @@ using System.Text;
 
 namespace OnlineShop.Persistence.EF
 {
-   public class EFDataContext:DbContext
+   public class EFDbContext:DbContext
     {
-        public EFDataContext(DbContextOptions<EFDataContext> options) : base(options)
+        public EFDbContext(DbContextOptions<EFDbContext> options) : base(options)
         {
 
         }

@@ -10,10 +10,10 @@ namespace OnlineShop.Persistence.EF.SalesInvoices
 {
     public class EFSalesInvoiceRepository : SalesInvoiceRepository
     {
-        private readonly EFDataContext _context;
+        private readonly EFDbContext _context;
         private readonly DbSet<SalesInvoice> _set;
 
-        public EFSalesInvoiceRepository(EFDataContext context)
+        public EFSalesInvoiceRepository(EFDbContext context)
         {
             _context = context;
             _set = _context.SalesInvoices;

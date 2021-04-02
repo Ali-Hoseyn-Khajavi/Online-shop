@@ -8,6 +8,6 @@ namespace OnlineShop.Services.GoodEntries.Contracts
     {
         public int Count { get; set; }
         public string InvoiceNumber { get; set; }
-        public int GoodId { get; set; }
+        public string GoodCode { get; set; }
     }
 }

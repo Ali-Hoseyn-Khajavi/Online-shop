@@ -11,10 +11,10 @@ namespace OnlineShop.Persistence.EF.Categories
 {
     public class EFCategoryRepository : CategoryRepository
     {
-        private readonly EFDataContext _context;
+        private readonly EFDbContext _context;
         private readonly DbSet<Category> _set;
 
-        public EFCategoryRepository(EFDataContext context)
+        public EFCategoryRepository(EFDbContext context)
         {
             _context = context;
             _set = _context.Categories;

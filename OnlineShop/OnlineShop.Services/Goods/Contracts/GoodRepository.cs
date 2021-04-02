@@ -9,7 +9,7 @@ namespace OnlineShop.Services.Goods.Contracts
  public interface GoodRepository 
     {
         void Add(Good good);
-        Task<bool> IsExistsTitleToGoodCategory(string title, int categoryId);
+        Task<bool> IsExistsTitleToCategory(string title, int categoryId);
         Task<bool> IsExistsByCode(string code);
         Task<Good> FindById(int id);
         void Delete(Good good);

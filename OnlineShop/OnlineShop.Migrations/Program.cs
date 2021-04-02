@@ -21,7 +21,7 @@ namespace OnlineShop.Migrations
                 .AddFluentMigratorCore()
                 .ConfigureRunner(rb => rb
                     .AddSqlServer()
-                    .WithGlobalConnectionString("Server=.;Database=OnlineShop_12;Trusted_Connection=True;")
+                    .WithGlobalConnectionString("Server=.;Database=OnlineStor;Trusted_Connection=True;")
                     .ScanIn(typeof(Program).Assembly).For.Migrations())
                 .AddLogging(lb => lb.AddFluentMigratorConsole())
                 .BuildServiceProvider(false);
