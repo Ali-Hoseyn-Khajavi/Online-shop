@@ -11,4 +11,11 @@ namespace OnlineShop.Services.SalesInvoices.Contracts
         public string InvoiceNumber { get; set; }
         public DateTime InvoiceDate { get; set; }
     }
+    public class SalesItemDto
+    {
+       
+        public string GoodCode { get; set; }
+        public int Count { get; set; }
+        public decimal Price { get; set; }
+    }
 }

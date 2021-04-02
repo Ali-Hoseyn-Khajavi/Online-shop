@@ -1,7 +1,9 @@
-﻿using OnlineShop.Entities;
+﻿using Microsoft.EntityFrameworkCore;
+using OnlineShop.Entities;
 using OnlineShop.Services.GoodEntries.Contracts;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -9,24 +11,42 @@ namespace OnlineShop.Persistence.EF.GoodEntries
 {
     public class EFGoodEntryRepository : GoodEntryRepository
     {
+        private readonly EFDataContext _context;
+        private readonly DbSet<GoodEntry> _set;
+
+        public EFGoodEntryRepository(EFDataContext context)
+        {
+            _context = context;
+            _set = _context.GoodEntries;
+        }
+
         public void Add(GoodEntry goodEntry)
         {
-            throw new NotImplementedException();
+            _set.Add(goodEntry);
         }
 
         public void Delete(GoodEntry goodEntry)
         {
-            throw new NotImplementedException();
+            _set.Remove(goodEntry);
         }
 
-        public Task<GoodEntry> FindById(int id)
+        public async Task<GoodEntry> FindById(int id)
         {
-            throw new NotImplementedException();
+            return await _set
+                .Include(_ => _.good)
+                .SingleOrDefaultAsync(_ => _.Id == id);
         }
 
-        public Task<IList<GetAllGoodEntryDto>> GetAll()
+        public async Task<IList<GetAllGoodEntryDto>> GetAll()
         {
-            throw new NotImplementedException();
+            return await _set.Select(_ => new GetAllGoodEntryDto()
+            {
+                Id = _.Id,
+                Count = _.Count,
+                InvoiceNumber = _.InvoiceNumber,
+                EntryDate = _.EntryDate,
+                GoodCode = _.good.Code
+            }).ToListAsync();
         }
     }
 }

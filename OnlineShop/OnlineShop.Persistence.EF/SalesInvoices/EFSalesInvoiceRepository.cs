@@ -1,4 +1,5 @@
-﻿using OnlineShop.Entities;
+﻿using Microsoft.EntityFrameworkCore;
+using OnlineShop.Entities;
 using OnlineShop.Services.SalesInvoices.Contracts;
 using System;
 using System.Collections.Generic;
@@ -9,24 +10,38 @@ namespace OnlineShop.Persistence.EF.SalesInvoices
 {
     public class EFSalesInvoiceRepository : SalesInvoiceRepository
     {
+        private readonly EFDataContext _context;
+        private readonly DbSet<SalesInvoice> _set;
+
+        public EFSalesInvoiceRepository(EFDataContext context)
+        {
+            _context = context;
+            _set = _context.SalesInvoices;
+        }
+
         public void Add(SalesInvoice salesInvoice)
         {
-            throw new NotImplementedException();
+            _set.Add(salesInvoice);
         }
 
-        public Task<SalesInvoice> FindById(int id)
+        public async Task<SalesInvoice> FindById(int id)
         {
-            throw new NotImplementedException();
+            return await _set
+                .Include(_ => _.SalesItems)
+                .Include(_ => _.AccountingDocuments)
+                .SingleOrDefaultAsync(_ => _.Id == id);
         }
 
-        public Task<SalesInvoice> FindByNumber(string number)
+        public async Task<SalesInvoice> FindByNumber(string number)
         {
-            throw new NotImplementedException();
+            return await _set
+                .Include(_ => _.AccountingDocuments)
+                .SingleOrDefaultAsync(_ => _.InvoiceNumber == number);
         }
 
-        public Task<bool> IsExistsByNumber(string number)
+        public async Task<bool> IsExistsByNumber(string number)
         {
-            throw new NotImplementedException();
+            return await _set.AnyAsync(_ => _.InvoiceNumber == number);
         }
     }
 }

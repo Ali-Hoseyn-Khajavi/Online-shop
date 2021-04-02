@@ -1,7 +1,9 @@
-﻿using OnlineShop.Entities;
+﻿using Microsoft.EntityFrameworkCore;
+using OnlineShop.Entities;
 using OnlineShop.Services.Categories.Contracts;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -9,19 +11,32 @@ namespace OnlineShop.Persistence.EF.Categories
 {
     public class EFCategoryRepository : CategoryRepository
     {
-        public void Add(Category category)
+        private readonly EFDataContext _context;
+        private readonly DbSet<Category> _set;
+
+        public EFCategoryRepository(EFDataContext context)
         {
-            throw new NotImplementedException();
+            _context = context;
+            _set = _context.Categories;
         }
 
-        public Task<IList<GetAllCategoryDto>> GetAll()
+        public void Add(Category category )
         {
-            throw new NotImplementedException();
+            _set.Add(category);
         }
 
-        public Task<bool> IsExistsById(int id)
+        public async Task<IList<GetAllCategoryDto>> GetAll()
         {
-            throw new NotImplementedException();
+            return await _set.Select(_ => new GetAllCategoryDto()
+            {
+                Id = _.Id,
+                Title = _.Title
+            }).ToListAsync();
+        }
+
+        public async Task<bool> IsExistsById(int id)
+        {
+            return await _set.AnyAsync(_ => _.Id == id);
         }
     }
 }

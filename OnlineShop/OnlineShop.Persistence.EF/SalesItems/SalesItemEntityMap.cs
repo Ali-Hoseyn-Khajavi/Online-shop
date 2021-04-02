@@ -17,8 +17,8 @@ namespace OnlineShop.Persistence.EF.SalesItems
             _.Property(_ => _.Price).IsRequired();
             _.Property(_ => _.GoodId).IsRequired();
             _.Property(_ => _.InvoiceId).IsRequired();
-            _.HasOne(_ => _.good).WithMany(_ => _.salesItems).HasForeignKey(_ => _.GoodId);
-            _.HasOne(_ => _.salesInvoice).WithMany(_ => _.salesItems).HasForeignKey(_=>_.InvoiceId);
+            _.HasOne(_ => _.good).WithMany(_ => _.SalesItems).HasForeignKey(_ => _.GoodId);
+            _.HasOne(_ => _.salesInvoice).WithMany(_ => _.SalesItems).HasForeignKey(_=>_.InvoiceId);
         }
     }
 }

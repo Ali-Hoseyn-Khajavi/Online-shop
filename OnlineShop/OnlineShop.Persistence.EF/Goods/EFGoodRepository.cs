@@ -1,4 +1,5 @@
-﻿using OnlineShop.Entities;
+﻿using Microsoft.EntityFrameworkCore;
+using OnlineShop.Entities;
 using OnlineShop.Services.Goods.Contracts;
 using System;
 using System.Collections.Generic;
@@ -9,29 +10,44 @@ namespace OnlineShop.Persistence.EF.Goods
 {
     public class EFGoodRepository : GoodRepository
     {
+        private readonly EFDataContext _context;
+        private readonly DbSet<Good> _set;
+        public EFGoodRepository(EFDataContext context)
+        {
+            _context = context;
+            _set = _context.goods;
+        }
         public void Add(Good good)
         {
-            throw new NotImplementedException();
+            _set.Add(good);
         }
 
         public void Delete(Good good)
         {
-            throw new NotImplementedException();
+            _set.Remove(good);
         }
 
-        public Task<Good> FindById(int id)
+        public async Task<Good> FindById(int id)
         {
-            throw new NotImplementedException();
+            return await _set
+                .Include(_ => _.GoodEntries)
+                .Include(_ => _.SalesItems)
+                .Include(_ => _.Warehouses)
+                .SingleOrDefaultAsync(_=>_.Id==id);
+                }
+
+        public async Task<bool> IsExistsByCode(string code)
+        {
+            return await _set.AnyAsync(_ => _.Code == code);
         }
 
-        public Task<bool> IsExistsByCode(string code)
+        public async Task<bool> IsExistsTitleToGoodCategory(string title, int categoryId)
         {
-            throw new NotImplementedException();
-        }
+            return await _set
+                .AnyAsync(_ =>
+                          _.Title == title &&
+                          _.CategoryId== categoryId);
 
-        public Task<bool> IsExistsTitleToGoodCategory(string title, int categoryId)
-        {
-            throw new NotImplementedException();
         }
     }
 }

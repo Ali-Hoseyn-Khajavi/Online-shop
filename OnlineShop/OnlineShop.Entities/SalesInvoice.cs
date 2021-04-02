@@ -8,14 +8,14 @@ namespace OnlineShop.Entities
     {
         public SalesInvoice()
         {
-            salesItems = new HashSet<SalesItem>();
-            accountingDocuments = new HashSet<AccountingDocument>();
+            SalesItems = new HashSet<SalesItem>();
+            AccountingDocuments = new HashSet<AccountingDocument>();
         }
         public int Id { get; set; }
         public string CustomerName { get; set; }
         public string InvoiceNumber { get; set; }
         public DateTime InvoiceDate { get; set; }
-        public HashSet<SalesItem>  salesItems { get; set; }
-        public HashSet<AccountingDocument>  accountingDocuments { get; set; }
+        public HashSet<SalesItem>  SalesItems { get; set; }
+        public HashSet<AccountingDocument>  AccountingDocuments { get; set; }
     }
 }

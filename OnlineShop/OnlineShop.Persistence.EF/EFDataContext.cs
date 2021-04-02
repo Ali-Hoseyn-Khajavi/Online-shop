@@ -21,11 +21,11 @@ namespace OnlineShop.Persistence.EF
         }
 
         public DbSet<AccountingDocument> AccountingDocuments { get; set; }
-        public DbSet<Good> Products { get; set; }
-        public DbSet<Category> ProductCategories { get; set; }
-        public DbSet<GoodEntry> ProductEntries { get; set; }
+        public DbSet<Good> goods { get; set; }
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<GoodEntry> GoodEntries { get; set; }
         public DbSet<SalesInvoice> SalesInvoices { get; set; }
         public DbSet<SalesItem> SalesItems { get; set; }
-        public DbSet<Warehouse> WarehouseItems { get; set; }
+        public DbSet<Warehouse> Warehouses { get; set; }
     }
 }

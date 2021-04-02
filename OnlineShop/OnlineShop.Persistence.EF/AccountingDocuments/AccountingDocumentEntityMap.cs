@@ -19,7 +19,7 @@ namespace OnlineShop.Persistence.EF.AccountingDocuments
             _.Property(_ => _.Totalprice).IsRequired();
             _.Property(_ => _.DateOfDocument).IsRequired();
             _.Property(_ => _.InvoiceId).IsRequired();
-            _.HasOne(_ => _.salesInvoice).WithMany(_ => _.accountingDocuments)
+            _.HasOne(_ => _.salesInvoice).WithMany(_ => _.AccountingDocuments)
                 .HasForeignKey(_ => _.InvoiceId)
                 .OnDelete(DeleteBehavior.Restrict);
         }

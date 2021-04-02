@@ -10,7 +10,8 @@ namespace OnlineShop.Entities
         public int Count { get; set; }
         public string InvoiceNumber { get; set; }
         public DateTime EntryDate { get; set; }
-        public int GoodId { get; set; }
+        public int GoodId{ get; set; }
         public Good  good { get; set; }
+        public string Title { get; set; }
     }
 }
