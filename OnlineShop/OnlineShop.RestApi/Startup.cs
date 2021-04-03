@@ -6,11 +6,18 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using OnlineShop.Infrastructure.Application;
+using OnlineShop.Persistence.EF;
+using OnlineShop.Persistence.EF.Categories;
+using OnlineShop.Persistence.EF.GoodEntries;
+using OnlineShop.Persistence.EF.Goods;
 using OnlineShop.Persistence.EF.SalesInvoices;
+using OnlineShop.Persistence.EF.Warehouses;
 using OnlineShop.Services.Categories;
 using OnlineShop.Services.Categories.Contracts;
 using OnlineShop.Services.GoodEntries;
@@ -38,14 +45,26 @@ namespace OnlineShop.RestApi
         {
             services.AddControllers();
             services.AddScoped<CategoryServices, CategoryAppServices>();
+            services.AddScoped<CategoryRepository, EFCategoryRepository>();
             services.AddScoped<GoodEntryServices, GoodEntryAppServices>();
             services.AddScoped<GoodServices, GoodAppServices>();
             services.AddScoped<SalesInvoiceServices, SalesInvoiceAppServices>();
             services.AddScoped<WarehouseServices, WarehouseAppServices>();
             services.AddScoped<SalesInvoiceRepository, EFSalesInvoiceRepository>();
+            services.AddScoped<CategoryRepository, EFCategoryRepository>();
+            services.AddScoped<GoodRepository, EFGoodRepository>();
+            services.AddScoped<GoodEntryRepository, EFGoodEntryRepository>();
+            services.AddScoped<WarehouseRepository, EFWarehouseRepository>();
+            services.AddScoped<UnitOfWork, EFUnitOfWork>();
+            services.AddDbContext<EFDbContext>(option=> 
+            {
+                option.UseSqlServer("Server =.; Database = OnlineStor; Trusted_Connection = True;");
+            });
             services.AddSwaggerGen();
 
+
         }
+        
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

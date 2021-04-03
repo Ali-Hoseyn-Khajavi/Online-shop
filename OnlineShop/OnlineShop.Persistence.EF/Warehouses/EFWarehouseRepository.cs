@@ -73,7 +73,9 @@ namespace OnlineShop.Persistence.EF.Warehouses
 
         public async Task<Warehouse> FindByGoodCode(string code)
         {
-            return await _set.SingleOrDefaultAsync(_ => _.good.Code == code);
+            return await _set
+                .Include(_=>_.good)
+                .SingleOrDefaultAsync(_ => _.good.Code == code);
         }
     }
 }

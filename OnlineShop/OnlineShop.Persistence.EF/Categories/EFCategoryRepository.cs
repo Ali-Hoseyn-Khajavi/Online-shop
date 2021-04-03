@@ -22,7 +22,7 @@ namespace OnlineShop.Persistence.EF.Categories
 
         public void Add(Category category )
         {
-            _set.Add(category);
+            _context.Add(category);
         }
 
         public async Task<IList<GetAllCategoryDto>> GetAll()

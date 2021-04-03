@@ -32,6 +32,8 @@ namespace OnlineShop.Services.GoodEntries
                 Count = dto.Count,
                 GoodId = warehouse.GoodId,
                 EntryDate = DateTime.Now,
+                Title="DGFDGFGFG",
+                
                 InvoiceNumber = dto.InvoiceNumber,
             };
 

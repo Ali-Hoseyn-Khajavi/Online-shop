@@ -6,16 +6,23 @@ using System.Threading.Tasks;
 
 namespace OnlineShop.Persistence.EF
 {
+
     public class EFUnitOfWork : UnitOfWork
     {
+
+        private readonly EFDbContext _context;
+        public EFUnitOfWork(EFDbContext context)
+        {
+            _context = context;
+        }
         public void Complate()
         {
-            throw new NotImplementedException();
+            _context.SaveChanges();
         }
 
-        public Task ComplateAysnc()
+        public async Task ComplateAysnc()
         {
-            throw new NotImplementedException();
+           await _context.SaveChangesAsync();
         }
     }
 }

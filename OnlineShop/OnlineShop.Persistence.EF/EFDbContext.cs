@@ -18,6 +18,7 @@ namespace OnlineShop.Persistence.EF
         {
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
             base.OnModelCreating(modelBuilder);
+           
         }
 
         public DbSet<AccountingDocument> AccountingDocuments { get; set; }
