@@ -1,6 +1,7 @@
 ﻿using OnlineShop.Entities;
 using OnlineShop.Infrastructure.Application;
 using OnlineShop.Services.GoodEntries.Contracts;
+using OnlineShop.Services.GoodEntries.Exceptions;
 using OnlineShop.Services.Goods.Exceptions;
 using OnlineShop.Services.Warehouses.Contracts;
 using System;
@@ -54,14 +55,38 @@ namespace OnlineShop.Services.GoodEntries
             }
         }
 
-        public Task Delete(int id)
+        public async Task Delete(int id)
         {
-            throw new NotImplementedException();
+            var goodEntry = await _repository.FindById(id);
+            CheckExistGoodEntry(goodEntry);
+            var warehouse = await _warehouseRepository.FindByGoodCode(goodEntry.good.Code);
+            CheckCountGoodEntryWharehouse(warehouse.Count, goodEntry.Count);
+            warehouse.Count -= goodEntry.Count;
+            _repository.Delete(goodEntry);
+            await _unitOfWork.ComplateAysnc();
+
         }
 
-        public Task<IList<GetAllGoodEntryDto>> GetAll()
+        private void CheckCountGoodEntryWharehouse(int warhouseCount,int goodEntryCount)
         {
-            throw new NotImplementedException();
+            if (warhouseCount<goodEntryCount)
+            {
+                throw new GoodEntryNotRemovableException();
+            }
+        }
+
+        private void CheckExistGoodEntry(GoodEntry goodEntry)
+        {
+            if (goodEntry==null)
+            {
+                throw new GoodEntryException();
+            }
+        }
+
+
+        public async Task<IList<GetAllGoodEntryDto>> GetAll()
+        {
+            return await _repository.GetAll();
         }
     }
 }

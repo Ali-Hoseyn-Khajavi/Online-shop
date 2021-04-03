@@ -63,10 +63,6 @@ namespace OnlineShop.Services.Goods
         return good.Id;
     }
 
-        private Task CheckedExistsTitleToCategory(string title, object productCategoryId)
-        {
-            throw new NotImplementedException();
-        }
 
 
         private async Task CheckedExistsCategory(int categoryId)
