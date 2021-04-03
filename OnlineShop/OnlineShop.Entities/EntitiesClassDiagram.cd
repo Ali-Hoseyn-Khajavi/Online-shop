@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="OnlineShop.Entities.AccountingDocument">
+    <Position X="13.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACIAQAAAAAAAAAAhAAAAAAAAQAQAAAAAAAAAAAAAA=</HashCode>
+      <FileName>AccountingDocument.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="InvoiceId" />
+      <Property Name="InvoiceNumber" />
+      <Property Name="salesInvoice" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="OnlineShop.Entities.Category">
+    <Position X="1.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAACA=</HashCode>
+      <FileName>Category.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Goods" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="OnlineShop.Entities.Good">
+    <Position X="5.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAgAAAAAQkAAAAAgAAAAAAAABAAAAAAIAAAQAAA=</HashCode>
+      <FileName>Good.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Warehouses" />
+      <Property Name="CategoryId" />
+      <Property Name="SalesItems" />
+      <Property Name="category" />
+      <Property Name="GoodEntries" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="OnlineShop.Entities.GoodEntry">
+    <Position X="8" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAQAAAAAAAEAAAgAAAASAAAAAACAAAAAAAAAAAAA=</HashCode>
+      <FileName>GoodEntry.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="InvoiceNumber" />
+      <Property Name="GoodId" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="OnlineShop.Entities.SalesInvoice">
+    <Position X="8" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAACAAAAAAAAQAAAAgAAAAAAQAAAAACAAAAAAAAAAAA=</HashCode>
+      <FileName>SalesInvoice.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="SalesItems" />
+      <Property Name="InvoiceNumber" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="OnlineShop.Entities.SalesItem">
+    <Position X="4.25" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACIQQAAQAAAAAAAAAAAAQAAAAAACAAAAAAAAAAAAA=</HashCode>
+      <FileName>SalesItem.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="salesInvoice" />
+      <Property Name="InvoiceId" />
+      <Property Name="GoodId" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="OnlineShop.Entities.Warehouse">
+    <Position X="3" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAQAAAAAAAAAAAAAAAAQAAAAAACAAAAAAAAAAAAA=</HashCode>
+      <FileName>Warehouse.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="GoodId" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="System.Collections.Generic.HashSet&lt;T&gt;" Collapsed="true">
+    <Position X="11.75" Y="4" Width="1.5" />
+    <NestedTypes>
+      <Class Name="System.Collections.Generic.HashSet&lt;T&gt;.Enumerator" Collapsed="true">
+        <TypeIdentifier />
+        <Lollipop Position="0.2" />
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="System.String" Collapsed="true">
+    <Position X="11.5" Y="1.25" Width="1.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="System.Int32" Collapsed="true">
+    <Position X="9.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
