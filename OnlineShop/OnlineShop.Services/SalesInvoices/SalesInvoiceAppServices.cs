@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace OnlineShop.Services.SalesInvoices
 {
-    class SalesInvoiceAppServices : SalesInvoiceServices
+  public  class SalesInvoiceAppServices : SalesInvoiceServices
     {
         private readonly UnitOfWork _unitOfWork;
         private readonly SalesInvoiceRepository _repository;

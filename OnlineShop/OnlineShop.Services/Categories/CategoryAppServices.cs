@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace OnlineShop.Services.Categories
 {
-    class CategoryAppServices : CategoryServices
+    public class CategoryAppServices : CategoryServices
     {
         private readonly UnitOfWork _unitOfWork;
         private readonly CategoryRepository _repository;

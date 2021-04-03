@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace OnlineShop.Services.Goods
 {
-    class GoodAppServices:GoodServices
+   public class GoodAppServices:GoodServices
     {
         private readonly UnitOfWork _unitOfWork;
         private readonly GoodRepository _repository;

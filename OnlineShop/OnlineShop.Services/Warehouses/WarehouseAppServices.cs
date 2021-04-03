@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace OnlineShop.Services.Warehouses
 {
-    class WarehouseAppServices : WarehouseServices
+  public  class WarehouseAppServices : WarehouseServices
     {
         private readonly WarehouseRepository _repository;
         public WarehouseAppServices(WarehouseRepository warehouseRepository)
