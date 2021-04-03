@@ -132,7 +132,7 @@ namespace OnlineShop.Services.Goods
 
     private void CheckedGoodsetByCount(int subsetCount)
     {
-        if (subsetCount > 0)
+        if (subsetCount < 0)
         {
             throw new GoodNotRemovableException();
         }
