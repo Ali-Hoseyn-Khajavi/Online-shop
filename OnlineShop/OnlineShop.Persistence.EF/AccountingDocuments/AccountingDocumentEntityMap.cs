@@ -21,7 +21,7 @@ namespace OnlineShop.Persistence.EF.AccountingDocuments
             _.Property(_ => _.InvoiceId).IsRequired();
             _.HasOne(_ => _.salesInvoice).WithMany(_ => _.AccountingDocuments)
                 .HasForeignKey(_ => _.InvoiceId)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

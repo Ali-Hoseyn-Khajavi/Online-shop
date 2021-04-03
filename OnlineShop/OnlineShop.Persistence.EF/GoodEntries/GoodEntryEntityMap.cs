@@ -19,7 +19,7 @@ namespace OnlineShop.Persistence.EF.GoodEntries
             _.Property(_ => _.GoodId).IsRequired();
             _.HasOne(_ => _.good).WithMany(_ => _.GoodEntries)
                  .HasForeignKey(_ => _.GoodId)
-                 .OnDelete(DeleteBehavior.Restrict);
+                 .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

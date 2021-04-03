@@ -17,7 +17,7 @@ namespace OnlineShop.Persistence.EF.Categories
             _.Property(_ => _.Title).IsRequired().HasMaxLength(50);
             _.HasMany(_ => _.Goods)
                 .WithOne(_ => _.category)
-                .HasForeignKey(_ => _.CategoryId).OnDelete(DeleteBehavior.Restrict);
+                .HasForeignKey(_ => _.CategoryId).OnDelete(DeleteBehavior.Cascade);
         }
     }
 }
